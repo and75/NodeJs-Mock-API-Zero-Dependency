@@ -1,0 +1,51 @@
+/**
+ * API MOKUP ON PURE NODE JS
+ * NODE JS TEST FOR BACKEND DEVELOPPER
+ * Author: Andrea Porcella
+ * Year : 2023
+ */
+
+body {
+    background-color: #dcebf5;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    padding: 1em 0;
+    align-items: center;
+}
+
+nav > h1.title {
+    flex: auto;
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+nav>.menu-actions {
+    width: 13rem;
+    text-align: right;
+}
+
+nav .button {
+    background-color: #151515;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+nav .button:hover {
+    background-color: #313131;
+}
+
+.items-container{
+    padding: 1em 0;
+}

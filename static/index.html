@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My App - Mock API on pure NodeJS (Zero Dependency)</title>
+    <script type="module" src="app.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- Declaring navigation for action menu -->
+    <nav>
+        <h1 class="title">Mock API on pure NodeJS (Zero Dependency)</h1>
+        <div class="menu-actions">
+            <button id="fetch" class="button">Fetch Products</button>
+        </div>
+    </nav>
+    
+    <hr>
+
+    <!-- Declaring container for products -->
+    <div id="products" class="items-container"></div>
+
+    <!-- Declaring template for product's items -->
+    <template id="item">
+        <style>
+            details {
+                font-size: 1.5em;
+            }
+
+            summary {
+                cursor: pointer;
+            }
+
+            p {
+                text-indent: 1.5rem;
+            }
+        </style>
+        <details>
+            <summary>
+                <strong>
+                    <slot name="name"></slot>
+                </strong> - <em>
+                    <slot name="rrp"></slot>
+                </em>
+            </summary>
+            <p>
+                <slot name="info"></slot>
+            </p>
+        </details>
+    </template>
+</body>
+
+</html>
