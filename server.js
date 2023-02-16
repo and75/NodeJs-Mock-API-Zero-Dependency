@@ -16,9 +16,9 @@ const { createServer } = require('http')
  * Product data
  */
 const data = JSON.stringify([
-  {id: 'A1', name: 'Vacuum Cleaner', rrp: '99.99', info: 'The suckiest vacuum in the world.'},
-  {id: 'A2', name: 'Leaf Blower', rrp: '303.33', info: 'This product will blow your socks off.'},
-  {id: 'B1', name: 'Chocolate Bar', rrp: '22.40', info: 'Delicious overpriced chocolate.'}
+  {id: 'A1', name: 'Aspirateurs', rrp: '99.99', info: 'L\'aspirateur le plus puissant au monde'},
+  {id: 'A2', name: 'Souffleur de feuilles', rrp: '303.33', info: 'Ce produit va époustoufler vos chaussettes.'},
+  {id: 'B1', name: 'Barre de chocolat', rrp: '22.40', info: 'Délicieux chocolat fabriqué à la main.'}
 ])
 
 /**
