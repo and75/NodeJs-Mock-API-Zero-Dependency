@@ -6,20 +6,47 @@
  * Year : 2023
  */
 
+
 /**
  * Declaring 'use strict'
  */
 'use strict'
-const { createServer } = require('http')
+
 
 /**
- * Product data
+ * Import file system module & Create server
  */
-const data = JSON.stringify([
-  {id: 'A1', name: 'Aspirateurs', rrp: '99.99', info: 'L\'aspirateur le plus puissant au monde'},
-  {id: 'A2', name: 'Souffleur de feuilles', rrp: '303.33', info: 'Ce produit va époustoufler vos chaussettes.'},
-  {id: 'B1', name: 'Barre de chocolat', rrp: '22.40', info: 'Délicieux chocolat fabriqué à la main.'}
-])
+const { readFile } = require('fs');
+const { createServer } = require('http');
+
+const handlingErrors = (error)=>{
+    console.error(error);
+    let formatError = {
+      success : false,
+      message : error,
+      payload : null
+    }
+    return formatError;
+}
+
+const getDataByType = async (type) => {
+
+  //Use Promise logic
+  return new Promise((resolve, reject) => {
+  
+    //Use a Template literals
+    let path = `./data${type}.json`;
+    
+    //Use async readFile of node Fs
+    readFile(path, (err, data) => {
+      if (err) { reject(err) };
+      let jsonData = JSON.parse(data);
+      resolve(jsonData);
+    });
+
+  })
+
+}
 
 /**
  * Initaliazing server from http
@@ -27,10 +54,22 @@ const data = JSON.stringify([
 const server = createServer((req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Content-Type', 'application/json')
-  res.end(data)
+  const reqType = req.url;
+  getDataByType(reqType).then((data) => {
+    res.statusCode = 200;
+    res.end(JSON.stringify({
+      success:true,
+      message : `Your request for "${reqType}" has been processed successfully`,
+      payload : data
+    }))
+  }).catch((error) => {
+    res.statusCode = 400;
+    res.end(JSON.stringify(handlingErrors(error)));
+  });
 })
 
 /**
  * Set the port
  */
 server.listen(3000)
+console.log('Node.js web server at port 3000 is running..')

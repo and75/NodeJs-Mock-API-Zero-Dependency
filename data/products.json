@@ -1,0 +1,5 @@
+[
+    { "id": "PR1", "name": "Aspirateurs", "rrp": "99.99", "info": "L'aspirateur le plus puissant au monde"},
+    { "id": "PR2", "name": "Souffleur de feuilles", "rrp": "303.33", "info": "Ce produit va époustoufler vos chaussettes."},
+    { "id": "PR3", "name": "Barre de chocolat", "rrp": "22.40", "info": "Délicieux chocolat fabriqué à la main."}
+]

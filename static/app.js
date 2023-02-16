@@ -9,7 +9,7 @@
 /**
  * Define API Url
  */
-const API = 'http://localhost:3000'
+const API = 'http://localhost:3000/products'
 
 /**
  * Action to populate exsperience
@@ -19,16 +19,22 @@ const populateProducts = async () => {
     products.innerHTML = ''
     const res = await fetch(API)
     const data = await res.json()
-    for (const product of data) {
-        const item = document.createElement('product-item')
-        for (const key of ['name', 'rrp', 'info']) {
-            const span = document.createElement('span')
-            span.slot = key
-            span.textContent = product[key]
-            item.appendChild(span)
+    if(data.success && data.payload){
+        console.info(data);
+        for (const product of data.payload) {
+            const item = document.createElement('product-item')
+            for (const key of ['name', 'rrp', 'info']) {
+                const span = document.createElement('span')
+                span.slot = key
+                span.textContent = product[key]
+                item.appendChild(span)
+            }
+            products.appendChild(item)
         }
-        products.appendChild(item)
+    } else {
+        console.error(data);
     }
+
 }
 
 /**
